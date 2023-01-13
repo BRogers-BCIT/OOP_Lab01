@@ -10,7 +10,7 @@ public class Guppy {
 
     // Fill this class with your code.
 
-
+    // Symbolic Constants
     final static int FIRST_GENERATION = 0;
     final static int YOUNG_FISH_AGE_IN_WEEKS = 10;
     final static int MATURE_FISH_AGE_IN_WEEKS = 30;
@@ -22,6 +22,8 @@ public class Guppy {
     final static double MINIMUM_HEALTH_COEFFICIENT = 0.0;
     final static double MAXIMUM_HEALTH_COEFFICIENT = 1.0;
 
+
+    // Instance Variables
     final private String genus;
     final private String species;
     private int ageInWeeks;
@@ -32,6 +34,7 @@ public class Guppy {
     final private int identificationNumber;
     private static int numberOfGuppiesBorn;
 
+    // No Variable Constructor
     public Guppy(){
         numberOfGuppiesBorn += 1;
         ageInWeeks = 0;
@@ -44,6 +47,7 @@ public class Guppy {
         identificationNumber = numberOfGuppiesBorn;
     }
 
+    // Variable Constructor
     public Guppy(String newGenus, String newSpecies, int newAgeInWeeks,
                  boolean newIsFemale, int newGenerationNumber, double newHealthCoefficient){
         numberOfGuppiesBorn += 1;
@@ -80,6 +84,8 @@ public class Guppy {
         identificationNumber = numberOfGuppiesBorn;
     }
 
+
+    // Accessors / Getters
     public String getGenus(){
         return genus;
     }
@@ -119,6 +125,8 @@ public class Guppy {
         return numberOfGuppiesBorn;
     }
 
+
+    // Mutators / Setters
     public void setAgeInWeeks(int newAgeInWeeks){
         if (isAlive && newAgeInWeeks >= 0
                 && newAgeInWeeks <= MAXIMUM_AGE_IN_WEEKS)  {
@@ -133,12 +141,14 @@ public class Guppy {
     }
 
     public void setHealthCoefficient(double newHealthCoefficient){
-        if (MINIMUM_HEALTH_COEFFICIENT <= newHealthCoefficient
+        if (Double.compare(MINIMUM_HEALTH_COEFFICIENT,newHealthCoefficient) <= 0
                 && newHealthCoefficient <= MAXIMUM_HEALTH_COEFFICIENT){
             healthCoefficient = newHealthCoefficient;
         }
     }
 
+
+    // Methods
     public void incrementAge(){
         ageInWeeks += 1;
         if (ageInWeeks >  MAXIMUM_AGE_IN_WEEKS){
@@ -179,6 +189,7 @@ public class Guppy {
 
     }
 
+    // ToString Override
     @Override
     public String toString() {
         return "Guppy{" +
